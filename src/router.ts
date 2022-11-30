@@ -1,18 +1,22 @@
-import { addUser, getAll, getOneRecord, removeRecord, bulkRecordInsertion, updateRecord } from "./userService";
+import * as userService from "./userService";
 
 import express from "express";
 
+const router = express.Router();
 
-const router = express.Router()
+router.post("/save", userService.addUser);
 
-router.post('/save', addUser)
+router.get("/get", userService.getAll);
+router.post("/getOne", userService.getOneRecord);
+router.delete("/delete", userService.removeRecord);
 
-router.get('/get', getAll)
-router.post('/getOne', getOneRecord)
-router.delete('/delete', removeRecord)
+router.post("/bulkInsert", userService.bulkRecordInsertion);
 
-router.post('/bulkInsert', bulkRecordInsertion)
+router.put("/updateName", userService.updateRecord);
 
-router.put('/updateName', updateRecord)
+//optimized code router
+router.post("/set", userService.recordData);
+router.post("/getting", userService.fetchOneOrMultiple);
+router.post("/oneOrManyUpdate", userService.upateOneOrMany);
 
-export { router }
+export { router };

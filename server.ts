@@ -17,7 +17,7 @@ app.use(cors())
 
 
 app.use('/', router)
-async function run() {
+ function run() {
 
     app.listen(`4000`, () => {
         console.log(`server listenig at port ${4000}`)
